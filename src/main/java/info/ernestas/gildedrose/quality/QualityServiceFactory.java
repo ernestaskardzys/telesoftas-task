@@ -14,6 +14,7 @@ public final class QualityServiceFactory {
         QUALITY_SERVICES.add(new DexterityQualityService());
         QUALITY_SERVICES.add(new SulfurasQualityService());
         QUALITY_SERVICES.add(new TafkalQualityService());
+        QUALITY_SERVICES.add(new ElixirQualityService());
     }
 
     private QualityServiceFactory() {

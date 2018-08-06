@@ -25,7 +25,12 @@ public class SulfurasQualityServiceTest {
 
     @Test
     public void testGetQuality() {
+        Item item = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
 
+        Item result = sulfurasQualityService.getQuality(item);
+
+        assertThat(result.getName(), is(correctItem.getName()));
+        assertThat(result.getQuality(), is(correctItem.getQuality()));
     }
 
 }

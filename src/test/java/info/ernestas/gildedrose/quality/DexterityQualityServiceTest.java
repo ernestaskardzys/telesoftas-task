@@ -25,7 +25,12 @@ public class DexterityQualityServiceTest {
 
     @Test
     public void testGetQuality() {
+        Item item = new Item("+5 Dexterity Vest", 10, 20);
 
+        Item result = dexterityQualityService.getQuality(item);
+
+        assertThat(result.getName(), is(correctItem.getName()));
+        assertThat(result.getQuality(), is(correctItem.getQuality()));
     }
 
 }

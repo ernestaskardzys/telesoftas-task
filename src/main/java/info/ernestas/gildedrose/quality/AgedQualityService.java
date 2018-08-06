@@ -11,7 +11,13 @@ public class AgedQualityService extends QualityService {
 
     @Override
     public Item getQuality(Item item) {
-        return null;
+        increaseQualityIfQualityLessThanFifty(item);
+
+        if (item.getSellIn() < 0) {
+            increaseQualityIfQualityLessThanFifty(item);
+        }
+
+        return item;
     }
 
 }

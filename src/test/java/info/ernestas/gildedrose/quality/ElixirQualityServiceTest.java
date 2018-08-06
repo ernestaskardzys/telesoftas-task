@@ -7,27 +7,27 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class ConjuredQualityServiceTest {
+public class ElixirQualityServiceTest {
 
     private Item correctItem;
-    private ConjuredQualityService conjuredQualityService;
+    private ElixirQualityService elixirQualityService;
 
     @Before
     public void setUp() {
-        conjuredQualityService = new ConjuredQualityService();
-        correctItem = new Item("Conjured Mana Cake", 2, 5);
+        elixirQualityService = new ElixirQualityService();
+        correctItem = new Item("Elixir of the Mongoose", 4, 6);
     }
 
     @Test
     public void testGetQualityServiceName() {
-        assertThat(conjuredQualityService.getQualityServiceName(), is("Conjured Mana Cake"));
+        assertThat(elixirQualityService.getQualityServiceName(), is("Elixir of the Mongoose"));
     }
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("Conjured Mana Cake", 3, 6);
+        Item item = new Item("Elixir of the Mongoose", 5, 7);
 
-        Item result = conjuredQualityService.getQuality(item);
+        Item result = elixirQualityService.getQuality(item);
 
         assertThat(result.getName(), is(correctItem.getName()));
         assertThat(result.getQuality(), is(correctItem.getQuality()));

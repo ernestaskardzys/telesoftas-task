@@ -1,5 +1,11 @@
 package info.ernestas.gildedrose.kata;
 
+import info.ernestas.gildedrose.quality.QualityService;
+import info.ernestas.gildedrose.quality.QualityServiceFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GildedRose {
 
     private static final String TAFKAL_80_ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
@@ -7,49 +13,21 @@ public class GildedRose {
     private static final String AGED_BRIE_CONCERT = "Aged Brie";
 
     public Item[] updateQuality(Item[] items) {
+        List<Item> resultingItems = new ArrayList<>();
         for (Item item : items) {
             if (!item.getName().equals(SULFURAS_CONCERT)) {
                 item.setSellIn(item.getSellIn() - 1);
             }
 
-            if (!item.getName().equals(AGED_BRIE_CONCERT) && !item.getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                decreaseQualityExceptForSulfurasConcert(item);
-            } else {
+            if (item.getName().equals(AGED_BRIE_CONCERT) && item.getName().equals(TAFKAL_80_ETC_CONCERT)) {
                 increaseQualityIfQualityLessThanFifty(item);
             }
 
-            if (item.getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                if (item.getSellIn() < 11) {
-                    increaseQualityIfQualityLessThanFifty(item);
-                }
-
-                if (item.getSellIn() < 6) {
-                    increaseQualityIfQualityLessThanFifty(item);
-                }
-
-                if (item.getSellIn() < 0) {
-                    item.setQuality(0);
-                }
-            }
-
-            if (item.getSellIn() < 0) {
-                if (item.getName().equals(AGED_BRIE_CONCERT)) {
-                    increaseQualityIfQualityLessThanFifty(item);
-                } else {
-                    decreaseQualityExceptForSulfurasConcert(item);
-                }
-            }
+            QualityService qualityService = QualityServiceFactory.getQualityService(item.getName());
+            resultingItems.add(qualityService.getQuality(item));
         }
 
         return items;
-    }
-
-    private void decreaseQualityExceptForSulfurasConcert(Item item) {
-        if (!item.getName().equals(SULFURAS_CONCERT)) {
-            if (item.getQuality() > 0) {
-                item.setQuality(decreaseQuality(item));
-            }
-        }
     }
 
     private void increaseQualityIfQualityLessThanFifty(Item item) {
@@ -62,7 +40,4 @@ public class GildedRose {
         return item.getQuality() + 1;
     }
 
-    private int decreaseQuality(Item item) {
-        return item.getQuality() - 1;
-    }
 }

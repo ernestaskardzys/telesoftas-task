@@ -43,6 +43,13 @@ public class QualityServiceFactoryTest {
         assertThat(tafkalQualityService, is(instanceOf(TafkalQualityService.class)));
     }
 
+    @Test
+    public void testGetQualityService_elixir() {
+        QualityService elixirQualityService = QualityServiceFactory.getQualityService("Elixir of the Mongoose");
+
+        assertThat(elixirQualityService, is(instanceOf(ElixirQualityService.class)));
+    }
+
     @Test(expected = NoQualityServiceException.class)
     public void testGetQualityService_notExistingQualityService() {
         QualityServiceFactory.getQualityService("Not existing concert name");

@@ -25,5 +25,12 @@ public class AgedQualityServiceTest {
 
     @Test
     public void testGetQuality() {
+        Item item = new Item("Aged Brie", 2, 0);
+
+        Item result = agedQualityService.getQuality(item);
+
+        assertThat(result.getName(), is(correctItem.getName()));
+        assertThat(result.getQuality(), is(correctItem.getQuality()));
     }
+
 }

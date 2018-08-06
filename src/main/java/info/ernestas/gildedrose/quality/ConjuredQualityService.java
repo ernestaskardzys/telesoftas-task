@@ -11,7 +11,13 @@ public class ConjuredQualityService extends QualityService {
 
     @Override
     public Item getQuality(Item item) {
-        return null;
+        decreaseQualityExceptForSulfurasConcert(item);
+
+        if (item.getSellIn() < 0) {
+            decreaseQualityExceptForSulfurasConcert(item);
+        }
+
+        return item;
     }
 
 }
