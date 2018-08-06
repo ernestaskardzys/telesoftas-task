@@ -10,23 +10,25 @@ import static org.junit.Assert.assertThat;
 
 public class DexterityQualityServiceTest {
 
+    private static final String NAME = "+5 Dexterity Vest";
+
     private Item correctItem;
     private DexterityQualityService dexterityQualityService;
 
     @Before
     public void setUp() {
         dexterityQualityService = new DexterityQualityService();
-        correctItem = ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(9).setQuality(19).build();
+        correctItem = ItemBuilder.item().setName(NAME).setSellIn(9).setQuality(19).build();
     }
 
     @Test
     public void testGetQualityServiceName() {
-        assertThat(dexterityQualityService.getQualityServiceName(), is("+5 Dexterity Vest"));
+        assertThat(dexterityQualityService.getQualityServiceName(), is(NAME));
     }
 
     @Test
     public void testGetQuality() {
-        Item item = ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(10).setQuality(20).build();
+        Item item = ItemBuilder.item().setName(NAME).setSellIn(10).setQuality(20).build();
 
         Item result = dexterityQualityService.getQuality(item);
 

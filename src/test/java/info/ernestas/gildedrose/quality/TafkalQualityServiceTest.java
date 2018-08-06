@@ -10,23 +10,25 @@ import static org.junit.Assert.assertThat;
 
 public class TafkalQualityServiceTest {
 
+    private static final String NAME = "Backstage passes to a TAFKAL80ETC concert";
+
     private Item correctItem;
     private TafkalQualityService tafkalQualityService;
 
     @Before
     public void setUp() {
         tafkalQualityService = new TafkalQualityService();
-        correctItem = ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(14).setQuality(21).build();
+        correctItem = ItemBuilder.item().setName(NAME).setSellIn(14).setQuality(21).build();
     }
 
     @Test
     public void testGetQualityServiceName() {
-        assertThat(tafkalQualityService.getQualityServiceName(), is("Backstage passes to a TAFKAL80ETC concert"));
+        assertThat(tafkalQualityService.getQualityServiceName(), is(NAME));
     }
 
     @Test
     public void testGetQuality() {
-        Item item = ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(15).setQuality(20).build();
+        Item item = ItemBuilder.item().setName(NAME).setSellIn(15).setQuality(20).build();
 
         Item result = tafkalQualityService.getQuality(item);
 
