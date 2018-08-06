@@ -8,26 +8,39 @@ import static org.junit.Assert.assertThat;
 
 public class ItemBuilderTest {
 
+    private static final String NAME = "Test name";
+    private static final int QUALITY = 1;
+    private static final int SELL_IN = 2;
     private ItemBuilder itemBuilder;
 
     @Before
     public void setUp() {
-        itemBuilder = ItemBuilder.item().setName("Test name").setQuality(1).setSellIn(2);
+        itemBuilder = ItemBuilder.item().setName(NAME).setSellIn(SELL_IN).setQuality(QUALITY);
     }
 
     @Test
     public void testSetName() {
-        assertThat(itemBuilder.build().getName(), is("Test name"));
+        assertThat(itemBuilder.build().getName(), is(NAME));
     }
 
     @Test
     public void testSetSellIn() {
-        assertThat(itemBuilder.build().getSellIn(), is(2));
+        assertThat(itemBuilder.build().getSellIn(), is(SELL_IN));
     }
 
     @Test
     public void testSetQuality() {
-        assertThat(itemBuilder.build().getQuality(), is(1));
+        assertThat(itemBuilder.build().getQuality(), is(QUALITY));
     }
 
+    @Test
+    public void testClone() {
+        Item item = itemBuilder.build();
+
+        Item clonedItem = ItemBuilder.item().clone(item).build();
+
+        assertThat(clonedItem.getName(), is(item.getName()));
+        assertThat(clonedItem.getSellIn(), is(item.getSellIn()));
+        assertThat(clonedItem.getQuality(), is(item.getQuality()));
+    }
 }
