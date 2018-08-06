@@ -7,36 +7,36 @@ public class GildedRose {
     private static final String AGED_BRIE_CONCERT = "Aged Brie";
 
     public Item[] updateQuality(Item[] items) {
-        for (int i = 0; i < items.length; i++) {
-            if (!items[i].getName().equals(AGED_BRIE_CONCERT) && !items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                decreaseQualityExceptForSulfurasConcert(items[i]);
+        for (Item item : items) {
+            if (!item.getName().equals(SULFURAS_CONCERT)) {
+                item.setSellIn(item.getSellIn() - 1);
+            }
+
+            if (!item.getName().equals(AGED_BRIE_CONCERT) && !item.getName().equals(TAFKAL_80_ETC_CONCERT)) {
+                decreaseQualityExceptForSulfurasConcert(item);
             } else {
-                increaseQualityIfQualityLessThanFifty(items[i]);
+                increaseQualityIfQualityLessThanFifty(item);
             }
 
-            if (items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                if (items[i].getSellIn() < 11) {
-                    increaseQualityIfQualityLessThanFifty(items[i]);
+            if (item.getName().equals(TAFKAL_80_ETC_CONCERT)) {
+                if (item.getSellIn() < 11) {
+                    increaseQualityIfQualityLessThanFifty(item);
                 }
 
-                if (items[i].getSellIn() < 6) {
-                    increaseQualityIfQualityLessThanFifty(items[i]);
+                if (item.getSellIn() < 6) {
+                    increaseQualityIfQualityLessThanFifty(item);
                 }
 
-                if (items[i].getSellIn() < 0) {
-                    items[i].setQuality(0);
+                if (item.getSellIn() < 0) {
+                    item.setQuality(0);
                 }
             }
 
-            if (!items[i].getName().equals(SULFURAS_CONCERT)) {
-                items[i].setSellIn(items[i].getSellIn() - 1);
-            }
-
-            if (items[i].getSellIn() < 0) {
-                if (items[i].getName().equals(AGED_BRIE_CONCERT)) {
-                    increaseQualityIfQualityLessThanFifty(items[i]);
+            if (item.getSellIn() < 0) {
+                if (item.getName().equals(AGED_BRIE_CONCERT)) {
+                    increaseQualityIfQualityLessThanFifty(item);
                 } else {
-                    decreaseQualityExceptForSulfurasConcert(items[i]);
+                    decreaseQualityExceptForSulfurasConcert(item);
                 }
             }
         }
