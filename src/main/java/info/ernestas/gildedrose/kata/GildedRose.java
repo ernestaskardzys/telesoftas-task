@@ -11,18 +11,20 @@ public class GildedRose {
             if (!items[i].getName().equals(AGED_BRIE_CONCERT) && !items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
                 decreaseQualityExceptForSulfurasConcert(items[i]);
             } else {
-                if (items[i].getQuality() < 50) {
-                    items[i].setQuality(increaseQuality(items[i]));
+                increaseQualityIfQualityLessThanFifty(items[i]);
+            }
 
-                    if (items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                        if (items[i].getSellIn() < 11) {
-                            increaseQualityIfQualityLessThanFifty(items[i]);
-                        }
+            if (items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
+                if (items[i].getSellIn() < 11) {
+                    increaseQualityIfQualityLessThanFifty(items[i]);
+                }
 
-                        if (items[i].getSellIn() < 6) {
-                            increaseQualityIfQualityLessThanFifty(items[i]);
-                        }
-                    }
+                if (items[i].getSellIn() < 6) {
+                    increaseQualityIfQualityLessThanFifty(items[i]);
+                }
+
+                if (items[i].getSellIn() < 0) {
+                    items[i].setQuality(0);
                 }
             }
 
@@ -34,14 +36,9 @@ public class GildedRose {
                 if (items[i].getName().equals(AGED_BRIE_CONCERT)) {
                     increaseQualityIfQualityLessThanFifty(items[i]);
                 } else {
-                    if (items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                        items[i].setQuality(items[i].getQuality() - items[i].getQuality());
-                    } else {
-                        decreaseQualityExceptForSulfurasConcert(items[i]);
-                    }
+                    decreaseQualityExceptForSulfurasConcert(items[i]);
                 }
             }
-
         }
 
         return items;
