@@ -1,5 +1,6 @@
 package info.ernestas.gildedrose.kata;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -17,6 +18,7 @@ public class GildedRoseTest {
     private Item item;
     private Item firstDay;
     private Item secondDay;
+    private Item[] items;
     private final Item ninetyNineDay;
 
     public GildedRoseTest(Item input, Item firstDay, Item secondDay, Item ninetyNineDay) {
@@ -87,18 +89,21 @@ public class GildedRoseTest {
         });
     }
 
+    @Before
+    public void setUp() {
+        items = new Item[]{ item };
+        gildedRose = new GildedRose();
+    }
+
     @Test
     public void testUpdateQuality_useThreeDaysWorthOfData() {
-        final Item[] items = { item };
-        gildedRose = new GildedRose();
-
-        gildedRose.updateQuality(items);
+        items = gildedRose.updateQuality(items);
 
         assertEquals(firstDay.getName(), items[0].getName());
         assertEquals(firstDay.getSellIn(), items[0].getSellIn());
         assertEquals(firstDay.getQuality(), items[0].getQuality());
 
-        gildedRose.updateQuality(items);
+        items = gildedRose.updateQuality(items);
 
         assertEquals(secondDay.getName(), items[0].getName());
         assertEquals(secondDay.getSellIn(), items[0].getSellIn());
@@ -106,7 +111,7 @@ public class GildedRoseTest {
 
         // Run same test to reach 99 days
         for (int i = 0; i < 97; i++) {
-            gildedRose.updateQuality(items);
+            items = gildedRose.updateQuality(items);
         }
 
         assertEquals(ninetyNineDay.getName(), items[0].getName());
