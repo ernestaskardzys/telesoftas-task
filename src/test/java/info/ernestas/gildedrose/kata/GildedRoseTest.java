@@ -68,13 +68,13 @@ public class GildedRoseTest {
     @Test
     public void test() {
         final Item[] items = { item };
-        gildedRose = new GildedRose(items);
+        gildedRose = new GildedRose();
 
-        gildedRose.updateQuality();
+        gildedRose.updateQuality(items);
 
-        assertEquals(result.name, items[0].name);
-        assertEquals(result.sellIn, items[0].sellIn);
-        assertEquals(result.quality, items[0].quality);
+        assertEquals(result.getName(), items[0].getName());
+        assertEquals(result.getSellIn(), items[0].getSellIn());
+        assertEquals(result.getQuality(), items[0].getQuality());
     }
 
 }

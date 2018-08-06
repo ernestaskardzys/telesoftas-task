@@ -21,17 +21,17 @@ public class ItemTest {
 
     @Test
     public void testGetName() {
-        assertThat(item.name, is(NAME));
+        assertThat(item.getName(), is(NAME));
     }
 
     @Test
     public void testGetSellIn() {
-        assertThat(item.sellIn, is(SELL_IN));
+        assertThat(item.getSellIn(), is(SELL_IN));
     }
 
     @Test
     public void testGetQuantity() {
-        assertThat(item.quality, is(QUALITY));
+        assertThat(item.getQuality(), is(QUALITY));
     }
 
     @Test
