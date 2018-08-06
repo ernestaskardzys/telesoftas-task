@@ -9,11 +9,7 @@ public class GildedRose {
     public Item[] updateQuality(Item[] items) {
         for (int i = 0; i < items.length; i++) {
             if (!items[i].getName().equals(AGED_BRIE_CONCERT) && !items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                if (items[i].getQuality() > 0) {
-                    if (!items[i].getName().equals(SULFURAS_CONCERT)) {
-                        items[i].setQuality(decreaseQuality(items[i]));
-                    }
-                }
+                decreaseQualityExceptForSulfurasConcert(items[i]);
             } else {
                 if (items[i].getQuality() < 50) {
                     items[i].setQuality(increaseQuality(items[i]));
@@ -37,20 +33,26 @@ public class GildedRose {
             if (items[i].getSellIn() < 0) {
                 if (items[i].getName().equals(AGED_BRIE_CONCERT)) {
                     increaseQualityIfQualityLessThanFifty(items[i]);
-                } else if (!items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
-                    if (items[i].getQuality() > 0) {
-                        if (!items[i].getName().equals(SULFURAS_CONCERT)) {
-                            items[i].setQuality(decreaseQuality(items[i]));
-                        }
-                    }
                 } else {
-                    items[i].setQuality(items[i].getQuality() - items[i].getQuality());
+                    if (items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
+                        items[i].setQuality(items[i].getQuality() - items[i].getQuality());
+                    } else {
+                        decreaseQualityExceptForSulfurasConcert(items[i]);
+                    }
                 }
             }
 
         }
 
         return items;
+    }
+
+    private void decreaseQualityExceptForSulfurasConcert(Item item) {
+        if (!item.getName().equals(SULFURAS_CONCERT)) {
+            if (item.getQuality() > 0) {
+                item.setQuality(decreaseQuality(item));
+            }
+        }
     }
 
     private void increaseQualityIfQualityLessThanFifty(Item item) {
