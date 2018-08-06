@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 
 public class TafkalQualityService extends QualityService {
 
@@ -27,6 +28,6 @@ public class TafkalQualityService extends QualityService {
             quality = decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
         }
 
-        return new Item(item.getName(), item.getSellIn(), quality);
+        return ItemBuilder.item().clone(item).setQuality(quality).build();
     }
 }

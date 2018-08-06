@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 
 public class AgedQualityService extends QualityService {
 
@@ -17,7 +18,7 @@ public class AgedQualityService extends QualityService {
             quality = increaseQualityIfQualityLessThanFifty(quality);
         }
 
-        return new Item(item.getName(), item.getSellIn(), quality);
+        return ItemBuilder.item().clone(item).setQuality(quality).build();
     }
 
 }
