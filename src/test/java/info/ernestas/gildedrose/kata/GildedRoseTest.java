@@ -7,6 +7,7 @@ import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -97,26 +98,26 @@ public class GildedRoseTest {
 
     @Test
     public void testUpdateQuality_useThreeDaysWorthOfData() {
-        items = gildedRose.updateQuality(items);
+        List<Item> resultingItems = gildedRose.updateQuality(items);
 
-        assertEquals(firstDay.getName(), items[0].getName());
-        assertEquals(firstDay.getSellIn(), items[0].getSellIn());
-        assertEquals(firstDay.getQuality(), items[0].getQuality());
+        assertEquals(firstDay.getName(), resultingItems.get(0).getName());
+        assertEquals(firstDay.getSellIn(), resultingItems.get(0).getSellIn());
+        assertEquals(firstDay.getQuality(), resultingItems.get(0).getQuality());
 
-        items = gildedRose.updateQuality(items);
+        resultingItems = gildedRose.updateQuality(items);
 
-        assertEquals(secondDay.getName(), items[0].getName());
-        assertEquals(secondDay.getSellIn(), items[0].getSellIn());
-        assertEquals(secondDay.getQuality(), items[0].getQuality());
+        assertEquals(secondDay.getName(), resultingItems.get(0).getName());
+        assertEquals(secondDay.getSellIn(), resultingItems.get(0).getSellIn());
+        assertEquals(secondDay.getQuality(), resultingItems.get(0).getQuality());
 
         // Run same test to reach 99 days
         for (int i = 0; i < 97; i++) {
-            items = gildedRose.updateQuality(items);
+            resultingItems = gildedRose.updateQuality(items);
         }
 
-        assertEquals(ninetyNineDay.getName(), items[0].getName());
-        assertEquals(ninetyNineDay.getSellIn(), items[0].getSellIn());
-        assertEquals(ninetyNineDay.getQuality(), items[0].getQuality());
+        assertEquals(ninetyNineDay.getName(), resultingItems.get(0).getName());
+        assertEquals(ninetyNineDay.getSellIn(), resultingItems.get(0).getSellIn());
+        assertEquals(ninetyNineDay.getQuality(), resultingItems.get(0).getQuality());
     }
 
 }
