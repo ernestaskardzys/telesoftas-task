@@ -8,6 +8,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
 
@@ -16,14 +17,14 @@ public class GildedRoseTest {
 
     private GildedRose gildedRose;
 
-    private Item item;
+    private Item input;
     private Item firstDay;
     private Item secondDay;
     private Item[] items;
     private final Item ninetyNineDay;
 
     public GildedRoseTest(Item input, Item firstDay, Item secondDay, Item ninetyNineDay) {
-        this.item = input;
+        this.input = input;
         this.firstDay = firstDay;
         this.secondDay = secondDay;
         this.ninetyNineDay = ninetyNineDay;
@@ -92,7 +93,7 @@ public class GildedRoseTest {
 
     @Before
     public void setUp() {
-        items = new Item[]{ item };
+        items = new Item[]{ input };
         gildedRose = new GildedRose();
     }
 
@@ -104,7 +105,9 @@ public class GildedRoseTest {
         assertEquals(firstDay.getSellIn(), resultingItems.get(0).getSellIn());
         assertEquals(firstDay.getQuality(), resultingItems.get(0).getQuality());
 
-        resultingItems = gildedRose.updateQuality(items);
+        final Function<Item, Item> createItem = item -> new Item(item.getName(), item.getSellIn(), item.getQuality());
+
+        resultingItems = gildedRose.updateQuality(resultingItems.stream().map(createItem).toArray(Item[]::new));
 
         assertEquals(secondDay.getName(), resultingItems.get(0).getName());
         assertEquals(secondDay.getSellIn(), resultingItems.get(0).getSellIn());
@@ -112,7 +115,7 @@ public class GildedRoseTest {
 
         // Run same test to reach 99 days
         for (int i = 0; i < 97; i++) {
-            resultingItems = gildedRose.updateQuality(items);
+            resultingItems = gildedRose.updateQuality(resultingItems.stream().map(createItem).toArray(Item[]::new));
         }
 
         assertEquals(ninetyNineDay.getName(), resultingItems.get(0).getName());

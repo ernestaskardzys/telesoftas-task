@@ -3,8 +3,8 @@ package info.ernestas.gildedrose.kata;
 public class Item {
 
     private final String name;
-    private int sellIn;
-    private int quality;
+    private final int sellIn;
+    private final int quality;
 
     public Item(String name, int sellIn, int quality) {
         this.name = name;
@@ -20,16 +20,8 @@ public class Item {
         return sellIn;
     }
 
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
-    }
-
     public int getQuality() {
         return quality;
-    }
-
-    public void setQuality(int quality) {
-        this.quality = quality;
     }
 
     @Override

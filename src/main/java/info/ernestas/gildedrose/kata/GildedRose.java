@@ -14,10 +14,11 @@ public class GildedRose {
     public List<Item> updateQuality(Item[] items) {
         List<Item> results = new ArrayList<>();
         for (Item item : items) {
-            item = sellInService.getSellIn(item);
+            int sellIn = sellInService.getSellIn(item.getName(), item.getSellIn());
 
-            QualityService qualityService = QualityServiceFactory.getQualityService(item.getName());
-            results.add(qualityService.getQuality(item));
+            Item updatedSellInItem = ItemBuilder.item().clone(item).setSellIn(sellIn).build();
+            QualityService qualityService = QualityServiceFactory.getQualityService(updatedSellInItem.getName());
+            results.add(qualityService.getQuality(updatedSellInItem));
         }
 
         return results;

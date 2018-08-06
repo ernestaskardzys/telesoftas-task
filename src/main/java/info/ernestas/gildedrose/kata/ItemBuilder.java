@@ -29,6 +29,13 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder clone(Item item) {
+        this.name = item.getName();
+        this.sellIn = item.getSellIn();
+        this.quality = item.getQuality();
+        return this;
+    }
+
     public Item build() {
         return new Item(name, sellIn, quality);
     }

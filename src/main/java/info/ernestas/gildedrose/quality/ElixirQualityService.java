@@ -11,13 +11,13 @@ public class ElixirQualityService extends QualityService {
 
     @Override
     public Item getQuality(Item item) {
-        decreaseQualityExceptForSulfurasConcert(item);
+        int quality = decreaseQualityExceptForSulfurasConcert(item.getName(), item.getQuality());
 
         if (item.getSellIn() < 0) {
-            decreaseQualityExceptForSulfurasConcert(item);
+            quality = decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
         }
 
-        return item;
+        return new Item(item.getName(), item.getSellIn(), quality);
     }
 
 }

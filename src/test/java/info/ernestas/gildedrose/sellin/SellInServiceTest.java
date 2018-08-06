@@ -21,18 +21,18 @@ public class SellInServiceTest {
     public void testGetSellIn() {
         Item item = ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build();
 
-        Item result = sellInService.getSellIn(item);
+        int result = sellInService.getSellIn(item.getName(), item.getSellIn());
 
-        assertThat(result.getSellIn(), is(2));
+        assertThat(result, is(2));
     }
 
     @Test
     public void testGetSellIn_forSulfurasConcert_shouldNotDecreaseSellIn() {
         Item item = ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
 
-        Item result = sellInService.getSellIn(item);
+        int result = sellInService.getSellIn(item.getName(), item.getSellIn());
 
-        assertThat(result.getSellIn(), is(0));
+        assertThat(result, is(0));
     }
 
 }
