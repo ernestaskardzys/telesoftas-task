@@ -8,7 +8,7 @@ public abstract class QualityService {
 
     public abstract String getQualityServiceName();
 
-    public abstract Item getQuality(Item item);
+    public abstract int getQuality(Item item);
 
     protected int increaseQualityIfQualityLessThanFifty(int quality) {
         if (quality < 50) {

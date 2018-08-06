@@ -30,9 +30,8 @@ public class ConjuredQualityServiceTest {
     public void testGetQuality() {
         Item item = ItemBuilder.item().setName(NAME).setSellIn(3).setQuality(6).build();
 
-        Item result = conjuredQualityService.getQuality(item);
+        int result = conjuredQualityService.getQuality(item);
 
-        assertThat(result.getName(), is(correctItem.getName()));
-        assertThat(result.getQuality(), is(correctItem.getQuality()));
+        assertThat(result, is(correctItem.getQuality()));
     }
 }

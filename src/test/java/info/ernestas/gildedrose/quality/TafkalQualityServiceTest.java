@@ -30,10 +30,9 @@ public class TafkalQualityServiceTest {
     public void testGetQuality() {
         Item item = ItemBuilder.item().setName(NAME).setSellIn(15).setQuality(20).build();
 
-        Item result = tafkalQualityService.getQuality(item);
+        int result = tafkalQualityService.getQuality(item);
 
-        assertThat(result.getName(), is(correctItem.getName()));
-        assertThat(result.getQuality(), is(correctItem.getQuality()));
+        assertThat(result, is(correctItem.getQuality()));
     }
 
 }

@@ -30,10 +30,9 @@ public class AgedQualityServiceTest {
     public void testGetQuality() {
         Item item = ItemBuilder.item().setName(NAME).setSellIn(2).setQuality(0).build();
 
-        Item result = agedQualityService.getQuality(item);
+        int result = agedQualityService.getQuality(item);
 
-        assertThat(result.getName(), is(correctItem.getName()));
-        assertThat(result.getQuality(), is(correctItem.getQuality()));
+        assertThat(result, is(correctItem.getQuality()));
     }
 
 }

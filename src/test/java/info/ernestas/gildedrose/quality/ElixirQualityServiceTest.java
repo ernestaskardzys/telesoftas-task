@@ -30,9 +30,8 @@ public class ElixirQualityServiceTest {
     public void testGetQuality() {
         Item item = ItemBuilder.item().setName(NAME).setSellIn(5).setQuality(7).build();
 
-        Item result = elixirQualityService.getQuality(item);
+        int result = elixirQualityService.getQuality(item);
 
-        assertThat(result.getName(), is(correctItem.getName()));
-        assertThat(result.getQuality(), is(correctItem.getQuality()));
+        assertThat(result, is(correctItem.getQuality()));
     }
 }

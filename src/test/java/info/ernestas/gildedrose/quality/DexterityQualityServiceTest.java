@@ -30,10 +30,9 @@ public class DexterityQualityServiceTest {
     public void testGetQuality() {
         Item item = ItemBuilder.item().setName(NAME).setSellIn(10).setQuality(20).build();
 
-        Item result = dexterityQualityService.getQuality(item);
+        int result = dexterityQualityService.getQuality(item);
 
-        assertThat(result.getName(), is(correctItem.getName()));
-        assertThat(result.getQuality(), is(correctItem.getQuality()));
+        assertThat(result, is(correctItem.getQuality()));
     }
 
 }

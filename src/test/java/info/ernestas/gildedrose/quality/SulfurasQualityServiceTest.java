@@ -30,10 +30,9 @@ public class SulfurasQualityServiceTest {
     public void testGetQuality() {
         Item item = ItemBuilder.item().setName(NAME).setSellIn(0).setQuality(80).build();
 
-        Item result = sulfurasQualityService.getQuality(item);
+        int result = sulfurasQualityService.getQuality(item);
 
-        assertThat(result.getName(), is(correctItem.getName()));
-        assertThat(result.getQuality(), is(correctItem.getQuality()));
+        assertThat(result, is(correctItem.getQuality()));
     }
 
 }
