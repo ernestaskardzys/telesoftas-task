@@ -11,23 +11,23 @@ public class GildedRose {
             if (!items[i].getName().equals(AGED_BRIE_CONCERT) && !items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
                 if (items[i].getQuality() > 0) {
                     if (!items[i].getName().equals(SULFURAS_CONCERT)) {
-                        items[i].setQuality(items[i].getQuality() - 1);
+                        items[i].setQuality(decreaseQuality(items[i]));
                     }
                 }
             } else {
                 if (items[i].getQuality() < 50) {
-                    items[i].setQuality(items[i].getQuality() + 1);
+                    items[i].setQuality(increaseQuality(items[i]));
 
                     if (items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
                         if (items[i].getSellIn() < 11) {
                             if (items[i].getQuality() < 50) {
-                                items[i].setQuality(items[i].getQuality() + 1);
+                                items[i].setQuality(increaseQuality(items[i]));
                             }
                         }
 
                         if (items[i].getSellIn() < 6) {
                             if (items[i].getQuality() < 50) {
-                                items[i].setQuality(items[i].getQuality() + 1);
+                                items[i].setQuality(increaseQuality(items[i]));
                             }
                         }
                     }
@@ -43,7 +43,7 @@ public class GildedRose {
                     if (!items[i].getName().equals(TAFKAL_80_ETC_CONCERT)) {
                         if (items[i].getQuality() > 0) {
                             if (!items[i].getName().equals(SULFURAS_CONCERT)) {
-                                items[i].setQuality(items[i].getQuality() - 1);
+                                items[i].setQuality(decreaseQuality(items[i]));
                             }
                         }
                     } else {
@@ -51,12 +51,20 @@ public class GildedRose {
                     }
                 } else {
                     if (items[i].getQuality() < 50) {
-                        items[i].setQuality(items[i].getQuality() + 1);
+                        items[i].setQuality(increaseQuality(items[i]));
                     }
                 }
             }
         }
 
         return items;
+    }
+
+    private int increaseQuality(Item item) {
+        return item.getQuality() + 1;
+    }
+
+    private int decreaseQuality(Item item) {
+        return item.getQuality() - 1;
     }
 }

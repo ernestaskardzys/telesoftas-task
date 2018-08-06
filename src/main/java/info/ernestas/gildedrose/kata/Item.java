@@ -2,7 +2,7 @@ package info.ernestas.gildedrose.kata;
 
 public class Item {
 
-    private String name;
+    private final String name;
     private int sellIn;
     private int quality;
 
@@ -14,10 +14,6 @@ public class Item {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getSellIn() {
