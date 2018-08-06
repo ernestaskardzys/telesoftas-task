@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class DexterityQualityServiceTest {
     @Before
     public void setUp() {
         dexterityQualityService = new DexterityQualityService();
-        correctItem = new Item("+5 Dexterity Vest", 9, 19);
+        correctItem = new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(9).setQuality(19).build();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class DexterityQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("+5 Dexterity Vest", 10, 20);
+        Item item = new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(10).setQuality(20).build();
 
         Item result = dexterityQualityService.getQuality(item);
 

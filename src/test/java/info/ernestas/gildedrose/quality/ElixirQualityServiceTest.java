@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class ElixirQualityServiceTest {
     @Before
     public void setUp() {
         elixirQualityService = new ElixirQualityService();
-        correctItem = new Item("Elixir of the Mongoose", 4, 6);
+        correctItem = new ItemBuilder().setName("Elixir of the Mongoose").setSellIn(4).setQuality(6).build();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class ElixirQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("Elixir of the Mongoose", 5, 7);
+        Item item = new ItemBuilder().setName("Elixir of the Mongoose").setSellIn(5).setQuality(7).build();
 
         Item result = elixirQualityService.getQuality(item);
 

@@ -16,7 +16,7 @@ public class ItemTest {
 
     @Before
     public void setUp() {
-        item = new Item(NAME, SELL_IN, QUALITY);
+        item = new ItemBuilder().setName(NAME).setSellIn(SELL_IN).setQuality(QUALITY).build();
     }
 
     @Test

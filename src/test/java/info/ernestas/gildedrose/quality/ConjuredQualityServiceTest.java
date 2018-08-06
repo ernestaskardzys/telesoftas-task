@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class ConjuredQualityServiceTest {
     @Before
     public void setUp() {
         conjuredQualityService = new ConjuredQualityService();
-        correctItem = new Item("Conjured Mana Cake", 2, 5);
+        correctItem = new ItemBuilder().setName("Conjured Mana Cake").setSellIn(2).setQuality(5).build();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class ConjuredQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("Conjured Mana Cake", 3, 6);
+        Item item = new ItemBuilder().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build();
 
         Item result = conjuredQualityService.getQuality(item);
 

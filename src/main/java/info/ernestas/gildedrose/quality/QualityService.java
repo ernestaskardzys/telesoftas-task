@@ -10,13 +10,13 @@ public abstract class QualityService {
 
     public abstract Item getQuality(Item item);
 
-    public void increaseQualityIfQualityLessThanFifty(Item item) {
+    protected void increaseQualityIfQualityLessThanFifty(Item item) {
         if (item.getQuality() < 50) {
             item.setQuality(increaseQuality(item));
         }
     }
 
-    public void decreaseQualityExceptForSulfurasConcert(Item item) {
+    protected void decreaseQualityExceptForSulfurasConcert(Item item) {
         if (!item.getName().equals(SULFURAS_CONCERT)) {
             if (item.getQuality() > 0) {
                 item.setQuality(decreaseQuality(item));

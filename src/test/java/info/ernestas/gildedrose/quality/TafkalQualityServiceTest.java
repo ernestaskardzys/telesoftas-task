@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class TafkalQualityServiceTest {
     @Before
     public void setUp() {
         tafkalQualityService = new TafkalQualityService();
-        correctItem = new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21);
+        correctItem = new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(14).setQuality(21).build();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class TafkalQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20);
+        Item item = new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(15).setQuality(20).build();
 
         Item result = tafkalQualityService.getQuality(item);
 

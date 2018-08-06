@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class AgedQualityServiceTest {
     @Before
     public void setUp() {
         agedQualityService = new AgedQualityService();
-        correctItem = new Item("Aged Brie", 1, 1);
+        correctItem = new ItemBuilder().setName("Aged Brie").setSellIn(1).setQuality(1).build();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class AgedQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("Aged Brie", 2, 0);
+        Item item = new ItemBuilder().setName("Aged Brie").setSellIn(2).setQuality(0).build();
 
         Item result = agedQualityService.getQuality(item);
 

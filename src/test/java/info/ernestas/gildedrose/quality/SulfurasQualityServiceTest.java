@@ -1,6 +1,7 @@
 package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
+import info.ernestas.gildedrose.kata.ItemBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,7 @@ public class SulfurasQualityServiceTest {
     @Before
     public void setUp() {
         sulfurasQualityService = new SulfurasQualityService();
-        correctItem = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
+        correctItem = new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
     }
 
     @Test
@@ -25,7 +26,7 @@ public class SulfurasQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
+        Item item = new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
 
         Item result = sulfurasQualityService.getQuality(item);
 
