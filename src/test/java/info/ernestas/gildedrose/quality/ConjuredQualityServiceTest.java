@@ -16,7 +16,7 @@ public class ConjuredQualityServiceTest {
     @Before
     public void setUp() {
         conjuredQualityService = new ConjuredQualityService();
-        correctItem = new ItemBuilder().setName("Conjured Mana Cake").setSellIn(2).setQuality(5).build();
+        correctItem = ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(2).setQuality(5).build();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class ConjuredQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new ItemBuilder().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build();
+        Item item = ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build();
 
         Item result = conjuredQualityService.getQuality(item);
 

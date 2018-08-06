@@ -33,59 +33,59 @@ public class GildedRoseTest {
     public static Collection<Item[]> data() {
         return Arrays.asList(new Item[][] {
                 {
-                    new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(10).setQuality(20).build(),
-                    new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(9).setQuality(19).build(),
-                    new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(8).setQuality(18).build(),
-                    new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(-89).setQuality(0).build()
+                    ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(10).setQuality(20).build(),
+                    ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(9).setQuality(19).build(),
+                    ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(8).setQuality(18).build(),
+                    ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(-89).setQuality(0).build()
                 },
                 {
-                    new ItemBuilder().setName("Aged Brie").setSellIn(2).setQuality(0).build(),
-                    new ItemBuilder().setName("Aged Brie").setSellIn(1).setQuality(1).build(),
-                    new ItemBuilder().setName("Aged Brie").setSellIn(0).setQuality(2).build(),
-                    new ItemBuilder().setName("Aged Brie").setSellIn(-97).setQuality(50).build()
+                    ItemBuilder.item().setName("Aged Brie").setSellIn(2).setQuality(0).build(),
+                    ItemBuilder.item().setName("Aged Brie").setSellIn(1).setQuality(1).build(),
+                    ItemBuilder.item().setName("Aged Brie").setSellIn(0).setQuality(2).build(),
+                    ItemBuilder.item().setName("Aged Brie").setSellIn(-97).setQuality(50).build()
                 },
                 {
-                    new ItemBuilder().setName("Elixir of the Mongoose").setSellIn(5).setQuality(7).build(),
-                    new ItemBuilder().setName("Elixir of the Mongoose").setSellIn(4).setQuality(6).build(),
-                    new ItemBuilder().setName("Elixir of the Mongoose").setSellIn(3).setQuality(5).build(),
-                    new ItemBuilder().setName("Elixir of the Mongoose").setSellIn(-94).setQuality(0).build()
+                    ItemBuilder.item().setName("Elixir of the Mongoose").setSellIn(5).setQuality(7).build(),
+                    ItemBuilder.item().setName("Elixir of the Mongoose").setSellIn(4).setQuality(6).build(),
+                    ItemBuilder.item().setName("Elixir of the Mongoose").setSellIn(3).setQuality(5).build(),
+                    ItemBuilder.item().setName("Elixir of the Mongoose").setSellIn(-94).setQuality(0).build()
                 },
                 {
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build(),
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build(),
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build(),
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build()
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build(),
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build(),
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build(),
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build()
                 },
                 {
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build(),
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build(),
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build(),
-                    new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build()
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build(),
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build(),
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build(),
+                    ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(-1).setQuality(80).build()
                 },
                 {
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(15).setQuality(20).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(14).setQuality(21).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(13).setQuality(22).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(-84).setQuality(0).build()
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(15).setQuality(20).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(14).setQuality(21).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(13).setQuality(22).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(-84).setQuality(0).build()
                 },
                 {
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(10).setQuality(49).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(9).setQuality(50).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(8).setQuality(50).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(-89).setQuality(0).build()
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(10).setQuality(49).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(9).setQuality(50).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(8).setQuality(50).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(-89).setQuality(0).build()
                 },
                 {
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(5).setQuality(49).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(4).setQuality(50).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(3).setQuality(50).build(),
-                    new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(-94).setQuality(0).build()
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(5).setQuality(49).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(4).setQuality(50).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(3).setQuality(50).build(),
+                    ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(-94).setQuality(0).build()
                 },
                 {
                     // this conjured item does not work properly yet
-                    new ItemBuilder().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build(),
-                    new ItemBuilder().setName("Conjured Mana Cake").setSellIn(2).setQuality(5).build(),
-                    new ItemBuilder().setName("Conjured Mana Cake").setSellIn(1).setQuality(4).build(),
-                    new ItemBuilder().setName("Conjured Mana Cake").setSellIn(-96).setQuality(0).build()
+                    ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build(),
+                    ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(2).setQuality(5).build(),
+                    ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(1).setQuality(4).build(),
+                    ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(-96).setQuality(0).build()
                 }
         });
     }

@@ -12,7 +12,7 @@ public class ItemBuilderTest {
 
     @Before
     public void setUp() {
-        itemBuilder = new ItemBuilder().setName("Test name").setQuality(1).setSellIn(2);
+        itemBuilder = ItemBuilder.item().setName("Test name").setQuality(1).setSellIn(2);
     }
 
     @Test

@@ -16,7 +16,7 @@ public class TafkalQualityServiceTest {
     @Before
     public void setUp() {
         tafkalQualityService = new TafkalQualityService();
-        correctItem = new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(14).setQuality(21).build();
+        correctItem = ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(14).setQuality(21).build();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class TafkalQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new ItemBuilder().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(15).setQuality(20).build();
+        Item item = ItemBuilder.item().setName("Backstage passes to a TAFKAL80ETC concert").setSellIn(15).setQuality(20).build();
 
         Item result = tafkalQualityService.getQuality(item);
 

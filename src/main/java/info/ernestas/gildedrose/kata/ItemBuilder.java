@@ -6,6 +6,14 @@ public class ItemBuilder {
     private int sellIn;
     private int quality;
 
+    private ItemBuilder() {
+
+    }
+
+    public static ItemBuilder item() {
+        return new ItemBuilder();
+    }
+
     public ItemBuilder setName(String name) {
         this.name = name;
         return this;

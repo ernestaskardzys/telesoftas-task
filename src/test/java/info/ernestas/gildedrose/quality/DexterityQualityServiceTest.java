@@ -16,7 +16,7 @@ public class DexterityQualityServiceTest {
     @Before
     public void setUp() {
         dexterityQualityService = new DexterityQualityService();
-        correctItem = new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(9).setQuality(19).build();
+        correctItem = ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(9).setQuality(19).build();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class DexterityQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new ItemBuilder().setName("+5 Dexterity Vest").setSellIn(10).setQuality(20).build();
+        Item item = ItemBuilder.item().setName("+5 Dexterity Vest").setSellIn(10).setQuality(20).build();
 
         Item result = dexterityQualityService.getQuality(item);
 

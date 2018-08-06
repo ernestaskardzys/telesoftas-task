@@ -16,7 +16,7 @@ public class SulfurasQualityServiceTest {
     @Before
     public void setUp() {
         sulfurasQualityService = new SulfurasQualityService();
-        correctItem = new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
+        correctItem = ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class SulfurasQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new ItemBuilder().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
+        Item item = ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
 
         Item result = sulfurasQualityService.getQuality(item);
 

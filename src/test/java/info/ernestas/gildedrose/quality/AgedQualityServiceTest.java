@@ -16,7 +16,7 @@ public class AgedQualityServiceTest {
     @Before
     public void setUp() {
         agedQualityService = new AgedQualityService();
-        correctItem = new ItemBuilder().setName("Aged Brie").setSellIn(1).setQuality(1).build();
+        correctItem = ItemBuilder.item().setName("Aged Brie").setSellIn(1).setQuality(1).build();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class AgedQualityServiceTest {
 
     @Test
     public void testGetQuality() {
-        Item item = new ItemBuilder().setName("Aged Brie").setSellIn(2).setQuality(0).build();
+        Item item = ItemBuilder.item().setName("Aged Brie").setSellIn(2).setQuality(0).build();
 
         Item result = agedQualityService.getQuality(item);
 
