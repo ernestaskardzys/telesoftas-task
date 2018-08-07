@@ -9,19 +9,15 @@ public final class QualityServiceFactory {
 
     static {
         QUALITY_SERVICES = new ArrayList<>();
-        QUALITY_SERVICES.add(new ConjuredQualityService());
         QUALITY_SERVICES.add(new AgedQualityService());
-        QUALITY_SERVICES.add(new DexterityQualityService());
-        QUALITY_SERVICES.add(new SulfurasQualityService());
         QUALITY_SERVICES.add(new TafkalQualityService());
-        QUALITY_SERVICES.add(new ElixirQualityService());
     }
 
     private QualityServiceFactory() {
     }
 
     public static QualityService getQualityService(String concertName) {
-        return QUALITY_SERVICES.stream().filter(s -> s.getQualityServiceName().equals(concertName)).findFirst().orElseThrow(() -> new NoQualityServiceException("Service does not exist"));
+        return QUALITY_SERVICES.stream().filter(s -> s.getQualityServiceName().equals(concertName)).findFirst().orElse(new DefaultQualityService());
     }
 
 }

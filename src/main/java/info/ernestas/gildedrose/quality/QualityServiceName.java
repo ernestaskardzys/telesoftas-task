@@ -4,6 +4,7 @@ public enum QualityServiceName {
 
     AGED("Aged Brie"),
     CONJURED("Conjured Mana Cake"),
+    DEFAULT("Default"),
     DEXTERITY("+5 Dexterity Vest"),
     ELIXIR("Elixir of the Mongoose"),
     SULFURAS("Sulfuras, Hand of Ragnaros"),

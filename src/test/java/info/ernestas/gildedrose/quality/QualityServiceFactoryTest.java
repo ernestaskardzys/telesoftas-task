@@ -19,21 +19,21 @@ public class QualityServiceFactoryTest {
     public void testGetQualityService_conjured() {
         QualityService conjuredQualityService = QualityServiceFactory.getQualityService(QualityServiceName.CONJURED.getName());
 
-        assertThat(conjuredQualityService, is(instanceOf(ConjuredQualityService.class)));
+        assertThat(conjuredQualityService, is(instanceOf(DefaultQualityService.class)));
     }
 
     @Test
     public void testGetQualityService_dexterity() {
         QualityService dexterityQualityService = QualityServiceFactory.getQualityService(QualityServiceName.DEXTERITY.getName());
 
-        assertThat(dexterityQualityService, is(instanceOf(DexterityQualityService.class)));
+        assertThat(dexterityQualityService, is(instanceOf(DefaultQualityService.class)));
     }
 
     @Test
     public void testGetQualityService_sulfuras() {
         QualityService sulfurasQualityService = QualityServiceFactory.getQualityService(QualityServiceName.SULFURAS.getName());
 
-        assertThat(sulfurasQualityService, is(instanceOf(SulfurasQualityService.class)));
+        assertThat(sulfurasQualityService, is(instanceOf(DefaultQualityService.class)));
     }
 
     @Test
@@ -47,12 +47,14 @@ public class QualityServiceFactoryTest {
     public void testGetQualityService_elixir() {
         QualityService elixirQualityService = QualityServiceFactory.getQualityService(QualityServiceName.ELIXIR.getName());
 
-        assertThat(elixirQualityService, is(instanceOf(ElixirQualityService.class)));
+        assertThat(elixirQualityService, is(instanceOf(DefaultQualityService.class)));
     }
 
-    @Test(expected = NoQualityServiceException.class)
+    @Test
     public void testGetQualityService_notExistingQualityService() {
-        QualityServiceFactory.getQualityService("Not existing concert name");
+        QualityService defaultQualityService = QualityServiceFactory.getQualityService("Not existing concert name");
+
+        assertThat(defaultQualityService, is(instanceOf(DefaultQualityService.class)));
     }
 
 }
