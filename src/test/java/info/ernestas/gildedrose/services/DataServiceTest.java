@@ -4,6 +4,8 @@ import info.ernestas.gildedrose.model.entity.ItemEntity;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -16,16 +18,20 @@ public class DataServiceTest {
 
     private ItemEntityRepository itemEntityRepository;
     private DataService dataService;
+    private ItemEntity itemEntity;
+    private ItemEntity itemEntity2;
 
     @Before
     public void setUp() {
         itemEntityRepository = mock(ItemEntityRepository.class);
         dataService = new DataService(itemEntityRepository);
+
+        itemEntity = new ItemEntity(UUID.randomUUID(), "First", 1, 2);
+        itemEntity2 = new ItemEntity(UUID.randomUUID(), "Second", 2, 3);
     }
 
     @Test
     public void testSaveData() {
-        ItemEntity itemEntity = new ItemEntity(UUID.randomUUID(), "First", 1, 2);
         when(itemEntityRepository.save(itemEntity)).thenReturn(itemEntity);
 
         ItemEntity result = dataService.save(itemEntity);
@@ -36,4 +42,17 @@ public class DataServiceTest {
         assertThat(result.getQuality(), is(itemEntity.getQuality()));
         verify(itemEntityRepository).save(itemEntity);
     }
+
+    @Test
+    public void testFindAll() {
+        List<ItemEntity> entities = Arrays.asList(itemEntity, itemEntity2);
+        when(itemEntityRepository.findAll()).thenReturn(entities);
+
+        List<ItemEntity> results = dataService.findAll();
+
+        assertThat(results.size(), is(entities.size()));
+        assertThat(results.get(0).getId(), is(entities.get(0).getId()));
+        assertThat(results.get(1).getId(), is(entities.get(1).getId()));
+    }
+
 }

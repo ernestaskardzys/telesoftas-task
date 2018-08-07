@@ -9,4 +9,5 @@ public class GildedroseApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GildedroseApplication.class, args);
 	}
+
 }

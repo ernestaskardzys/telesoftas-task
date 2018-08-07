@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      database: dbtest
+      host: localhost
+      port: 27027

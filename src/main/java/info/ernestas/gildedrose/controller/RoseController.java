@@ -1,22 +1,30 @@
 package info.ernestas.gildedrose.controller;
 
-import info.ernestas.gildedrose.kata.Item;
-import info.ernestas.gildedrose.kata.ItemBuilder;
+import info.ernestas.gildedrose.model.response.ItemResponse;
+import info.ernestas.gildedrose.services.CalculationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class RoseController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoseController.class);
 
+    private final CalculationService calculationService;
+
+    public RoseController(CalculationService calculationService) {
+        this.calculationService = calculationService;
+    }
+
     @GetMapping("/list")
-    public Item listData() {
+    public List<ItemResponse> listData() {
         LOGGER.info("Received list request");
 
-        return ItemBuilder.item().setName("Test").build();
+        return calculationService.listData();
     }
 
 }
