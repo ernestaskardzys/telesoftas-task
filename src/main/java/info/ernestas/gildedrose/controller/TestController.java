@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/test")
@@ -26,14 +27,14 @@ public class TestController {
     }
 
     @GetMapping("/data")
-    public void insertTestData() {
-        Item item = ItemBuilder.item().setName(QualityServiceName.DEXTERITY.getName()).setSellIn(10).setQuality(20).build();
-        Item item2 = ItemBuilder.item().setName(QualityServiceName.AGED.getName()).setSellIn(2).setQuality(0).build();
+    public List<ItemEntity> insertTestData() {
+        Item item = ItemBuilder.item().setId(UUID.randomUUID()).setName(QualityServiceName.DEXTERITY.getName()).setSellIn(10).setQuality(20).build();
+        Item item2 = ItemBuilder.item().setId(UUID.randomUUID()).setName(QualityServiceName.AGED.getName()).setSellIn(2).setQuality(0).build();
         List<Item> items = Arrays.asList(item, item2);
 
         List<ItemEntity> itemEntities = transformer.convertToItemEntities(items);
 
-        dataService.saveAll(itemEntities);
+        return dataService.saveAll(itemEntities);
     }
 
 }
