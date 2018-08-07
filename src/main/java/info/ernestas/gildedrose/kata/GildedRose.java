@@ -12,7 +12,8 @@ import java.util.stream.Stream;
 
 public class GildedRose {
 
-    private Executor executor = Executors.newFixedThreadPool(2);
+    private static final Executor EXECUTOR = Executors.newFixedThreadPool(2);
+
     private RoseWorker roseWorker = new RoseWorker();
 
     public List<Item> updateQuality(Item[] items) {
@@ -30,7 +31,7 @@ public class GildedRose {
     }
 
     private CompletableFuture<Boolean> calculateItems(List<Item> results, RoseWorker roseWorker, Item item) {
-        return CompletableFuture.supplyAsync(() -> roseWorker.getItem(item), executor).thenApplyAsync(i -> results.add(i));
+        return CompletableFuture.supplyAsync(() -> roseWorker.getItem(item), EXECUTOR).thenApplyAsync(i -> results.add(i));
     }
 
 }
