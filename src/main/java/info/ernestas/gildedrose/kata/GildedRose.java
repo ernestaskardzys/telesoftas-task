@@ -1,7 +1,5 @@
 package info.ernestas.gildedrose.kata;
 
-import info.ernestas.gildedrose.RoseWorker;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;

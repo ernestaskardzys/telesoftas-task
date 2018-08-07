@@ -2,6 +2,7 @@ package info.ernestas.gildedrose;
 
 import info.ernestas.gildedrose.kata.Item;
 import info.ernestas.gildedrose.kata.ItemBuilder;
+import info.ernestas.gildedrose.kata.RoseWorker;
 import info.ernestas.gildedrose.quality.QualityServiceName;
 import org.junit.Before;
 import org.junit.Test;

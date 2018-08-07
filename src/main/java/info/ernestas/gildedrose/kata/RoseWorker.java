@@ -1,7 +1,5 @@
-package info.ernestas.gildedrose;
+package info.ernestas.gildedrose.kata;
 
-import info.ernestas.gildedrose.kata.Item;
-import info.ernestas.gildedrose.kata.ItemBuilder;
 import info.ernestas.gildedrose.quality.QualityService;
 import info.ernestas.gildedrose.quality.QualityServiceFactory;
 import info.ernestas.gildedrose.sellin.SellInService;
