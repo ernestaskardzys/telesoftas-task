@@ -9,6 +9,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 import java.util.function.Function;
 
 import static org.junit.Assert.assertEquals;
@@ -106,7 +107,7 @@ public class GildedRoseTest {
         assertEquals(firstDay.getSellIn(), resultingItems.get(0).getSellIn());
         assertEquals(firstDay.getQuality(), resultingItems.get(0).getQuality());
 
-        final Function<Item, Item> createItem = item -> new Item(item.getName(), item.getSellIn(), item.getQuality());
+        final Function<Item, Item> createItem = item -> new Item(UUID.randomUUID(), item.getName(), item.getSellIn(), item.getQuality());
 
         resultingItems = gildedRose.updateQuality(resultingItems.stream().map(createItem).toArray(Item[]::new));
 

@@ -14,7 +14,7 @@ public class RoseWorker {
         final int sellIn = sellInService.getSellIn(item.getName(), item.getSellIn());
         final int quality = qualityService.getQuality(item);
 
-        return ItemBuilder.item().setName(item.getName()).setSellIn(sellIn).setQuality(quality).build();
+        return ItemBuilder.item().setId(item.getId()).setName(item.getName()).setSellIn(sellIn).setQuality(quality).build();
     }
 
 }

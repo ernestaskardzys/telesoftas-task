@@ -1,7 +1,10 @@
 package info.ernestas.gildedrose.kata;
 
+import java.util.UUID;
+
 public class ItemBuilder {
 
+    private UUID id;
     private String name;
     private int sellIn;
     private int quality;
@@ -12,6 +15,11 @@ public class ItemBuilder {
 
     public static ItemBuilder item() {
         return new ItemBuilder();
+    }
+
+    public ItemBuilder setId(UUID id) {
+        this.id = id;
+        return this;
     }
 
     public ItemBuilder setName(String name) {
@@ -30,6 +38,7 @@ public class ItemBuilder {
     }
 
     public ItemBuilder clone(Item item) {
+        this.id = item.getId();
         this.name = item.getName();
         this.sellIn = item.getSellIn();
         this.quality = item.getQuality();
@@ -37,7 +46,7 @@ public class ItemBuilder {
     }
 
     public Item build() {
-        return new Item(name, sellIn, quality);
+        return new Item(id, name, sellIn, quality);
     }
 
 }

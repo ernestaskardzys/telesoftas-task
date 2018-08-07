@@ -27,8 +27,8 @@ public class TestController {
         Item item = ItemBuilder.item().setName(QualityServiceName.DEXTERITY.getName()).setSellIn(10).setQuality(20).build();
         Item item2 = ItemBuilder.item().setName(QualityServiceName.AGED.getName()).setSellIn(2).setQuality(0).build();
 
-        ItemEntity itemEntity = transformer.convert(item);
-        ItemEntity itemEntity2 = transformer.convert(item2);
+        ItemEntity itemEntity = transformer.convertToItemEntity(item);
+        ItemEntity itemEntity2 = transformer.convertToItemEntity(item2);
 
         dataService.save(itemEntity);
         dataService.save(itemEntity2);

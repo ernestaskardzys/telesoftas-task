@@ -3,7 +3,6 @@ package info.ernestas.gildedrose;
 import info.ernestas.gildedrose.model.entity.ItemEntity;
 import info.ernestas.gildedrose.model.response.ItemResponse;
 import info.ernestas.gildedrose.service.repository.ItemEntityRepository;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Map;
@@ -23,6 +23,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Rollback
 public class GildedroseApplicationTests {
 
     private static final String MICROSERVICE_URL = "http://localhost:";
@@ -44,8 +45,8 @@ public class GildedroseApplicationTests {
     private ItemEntity itemEntity;
     private ItemEntity itemEntity2;
 
-    @Before
-    public void setUp() {
+    @Test
+    public void shouldReturnItems() {
         firstId = UUID.randomUUID();
         secondId = UUID.randomUUID();
         itemEntity = new ItemEntity(firstId, "First", 1, 2);
@@ -53,10 +54,7 @@ public class GildedroseApplicationTests {
 
         itemEntityRepository.save(itemEntity);
         itemEntityRepository.save(itemEntity2);
-    }
 
-    @Test
-    public void shouldReturnItems_currentJustOne() {
         ResponseEntity<ItemResponse[]> entity = restTemplate.getForEntity(MICROSERVICE_URL + servicePort + "/list", ItemResponse[].class);
 
         assertThat(entity.getStatusCode(), is(HttpStatus.OK));

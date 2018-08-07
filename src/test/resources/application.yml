@@ -4,3 +4,7 @@ spring:
       database: dbtest
       host: localhost
       port: 27027
+
+scheduler:
+  calculation:
+    delay: 0 0 9 * * ? # Run at 9 AM
