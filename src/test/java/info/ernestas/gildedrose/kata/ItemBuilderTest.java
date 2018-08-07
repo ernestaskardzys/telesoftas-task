@@ -40,8 +40,6 @@ public class ItemBuilderTest {
 
         Item clonedItem = ItemBuilder.item().clone(item).build();
 
-        assertThat(clonedItem.getName(), is(item.getName()));
-        assertThat(clonedItem.getSellIn(), is(item.getSellIn()));
-        assertThat(clonedItem.getQuality(), is(item.getQuality()));
+        assertThat(clonedItem, is(item));
     }
 }

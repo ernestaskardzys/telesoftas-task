@@ -15,12 +15,12 @@ public class ItemToItemEntityTransformer {
         return items.stream().map(i -> convertToItemEntity(i)).collect(toList());
     }
 
-    private ItemEntity convertToItemEntity(Item item) {
-        return new ItemEntity(item.getId(), item.getName(), item.getSellIn(), item.getQuality());
-    }
-
     public List<Item> convertToItems(List<ItemEntity> itemEntities) {
         return itemEntities.stream().map(e -> convertToItem(e)).collect(toList());
+    }
+
+    private ItemEntity convertToItemEntity(Item item) {
+        return new ItemEntity(item.getId(), item.getName(), item.getSellIn(), item.getQuality());
     }
 
     private Item convertToItem(ItemEntity itemEntity) {

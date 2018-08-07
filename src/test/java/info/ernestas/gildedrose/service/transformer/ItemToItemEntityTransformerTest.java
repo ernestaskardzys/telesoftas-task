@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 public class ItemToItemEntityTransformerTest {
@@ -29,7 +28,7 @@ public class ItemToItemEntityTransformerTest {
     }
 
     @Test
-    public void testConvertToItemEntity() {
+    public void testConvertToItemEntities() {
         Item item = ItemBuilder.item().setId(id).setName(QualityServiceName.AGED.getName()).setSellIn(2).setQuality(0).build();
         Item item2 = ItemBuilder.item().setId(id2).setName(QualityServiceName.AGED.getName()).setSellIn(2).setQuality(0).build();
         List<Item> items = Arrays.asList(item, item2);
@@ -48,7 +47,7 @@ public class ItemToItemEntityTransformerTest {
     }
 
     @Test
-    public void testConvertToItem() {
+    public void testConvertToItems() {
         ItemEntity itemEntity = new ItemEntity(id, QualityServiceName.AGED.getName(), 2, 0);
         ItemEntity itemEntity2 = new ItemEntity(id2, QualityServiceName.DEXTERITY.getName(), 2, 0);
         List<ItemEntity> itemEntities = Arrays.asList(itemEntity, itemEntity2);

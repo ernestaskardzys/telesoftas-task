@@ -39,8 +39,8 @@ public class RoseControllerTest {
         List<ItemResponse> results = roseController.listData();
 
         assertThat(results.size(), is(data.size()));
-        assertThat(results.get(0).getId(), is(data.get(0).getId()));
-        assertThat(results.get(1).getId(), is(data.get(1).getId()));
+        assertThat(results.get(0), is(data.get(0)));
+        assertThat(results.get(1), is(data.get(1)));
         verify(calculationService).listData();
     }
 }

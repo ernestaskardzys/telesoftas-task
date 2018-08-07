@@ -1,5 +1,8 @@
 package info.ernestas.gildedrose.kata;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import java.util.UUID;
 
 public class Item {
@@ -40,4 +43,31 @@ public class Item {
     public String toString() {
         return this.id + ", "+ this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        return new EqualsBuilder()
+                .append(sellIn, item.sellIn)
+                .append(quality, item.quality)
+                .append(id, item.id)
+                .append(name, item.name)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(name)
+                .append(sellIn)
+                .append(quality)
+                .toHashCode();
+    }
+
 }

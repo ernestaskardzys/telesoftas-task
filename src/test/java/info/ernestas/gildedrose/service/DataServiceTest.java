@@ -38,14 +38,8 @@ public class DataServiceTest {
 
         List<ItemEntity> results = dataService.saveAll(entities);
 
-        assertThat(results.get(0).getId(), is(itemEntity.getId()));
-        assertThat(results.get(0).getName(), is(itemEntity.getName()));
-        assertThat(results.get(0).getSellIn(), is(itemEntity.getSellIn()));
-        assertThat(results.get(0).getQuality(), is(itemEntity.getQuality()));
-        assertThat(results.get(1).getId(), is(itemEntity2.getId()));
-        assertThat(results.get(1).getName(), is(itemEntity2.getName()));
-        assertThat(results.get(1).getSellIn(), is(itemEntity2.getSellIn()));
-        assertThat(results.get(1).getQuality(), is(itemEntity2.getQuality()));
+        assertThat(results.get(0), is(itemEntity));
+        assertThat(results.get(1), is(itemEntity2));
         verify(itemEntityRepository).saveAll(entities);
     }
 
@@ -57,8 +51,8 @@ public class DataServiceTest {
         List<ItemEntity> results = dataService.findAll();
 
         assertThat(results.size(), is(entities.size()));
-        assertThat(results.get(0).getId(), is(entities.get(0).getId()));
-        assertThat(results.get(1).getId(), is(entities.get(1).getId()));
+        assertThat(results.get(0), is(itemEntity));
+        assertThat(results.get(1), is(itemEntity2));
     }
 
 }
