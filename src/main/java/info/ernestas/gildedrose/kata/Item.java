@@ -6,6 +6,10 @@ public class Item {
     private final int sellIn;
     private final int quality;
 
+    public Item() {
+        this(null, 0, 0);
+    }
+
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
