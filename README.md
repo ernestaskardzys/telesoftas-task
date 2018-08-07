@@ -1,3 +1,27 @@
+## Refactoring process
+
+I applied the following process:
+
+- Cover high-level tests existing code.
+- Try to make some initial small refactorings by extracting code.
+- Later just started refactoring & developing the whole application by using TDD. 
+
+## Architecture
+
+As this project is quite small so architecture is a bit artificial.
+
+As I prefer to split application into layers, I had to create a couple of objects which are effectively identical: *Item*, *ItemEntity* and *ItemResponse*.
+
+- *Item* is original class.
+- *ItemEntity* is an entity class for database.
+- *ItemResponse* is a POJO class used return response to the client.
+
+We could technically use one object for all the tasks above, but I strongly believe that layers of application should be separated. Hence three objects were born.
+
+### Scheduler
+
+Scheduler runs once per day - at 9 AM.
+
 ## Running the project
 
 In order to run the project, execute the following commands:
