@@ -1,4 +1,4 @@
-package info.ernestas.gildedrose.services.transformer;
+package info.ernestas.gildedrose.service.transformer;
 
 import info.ernestas.gildedrose.kata.Item;
 import info.ernestas.gildedrose.kata.ItemBuilder;

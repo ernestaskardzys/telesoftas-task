@@ -1,7 +1,7 @@
 package info.ernestas.gildedrose.controller;
 
 import info.ernestas.gildedrose.model.response.ItemResponse;
-import info.ernestas.gildedrose.services.CalculationService;
+import info.ernestas.gildedrose.service.CalculationService;
 import org.junit.Before;
 import org.junit.Test;
 

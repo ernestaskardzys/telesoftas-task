@@ -1,6 +1,5 @@
-package info.ernestas.gildedrose.services;
+package info.ernestas.gildedrose.service;
 
-import info.ernestas.gildedrose.kata.Item;
 import info.ernestas.gildedrose.model.entity.ItemEntity;
 import info.ernestas.gildedrose.model.response.ItemResponse;
 import org.junit.Before;

@@ -1,7 +1,7 @@
 package info.ernestas.gildedrose.controller;
 
 import info.ernestas.gildedrose.model.response.ItemResponse;
-import info.ernestas.gildedrose.services.CalculationService;
+import info.ernestas.gildedrose.service.CalculationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;

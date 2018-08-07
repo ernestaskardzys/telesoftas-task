@@ -1,29 +1,25 @@
 package info.ernestas.gildedrose;
 
-import info.ernestas.gildedrose.kata.Item;
 import info.ernestas.gildedrose.model.entity.ItemEntity;
 import info.ernestas.gildedrose.model.response.ItemResponse;
-import info.ernestas.gildedrose.services.ItemEntityRepository;
+import info.ernestas.gildedrose.service.repository.ItemEntityRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -40,24 +36,34 @@ public class GildedroseApplicationTests {
     @Autowired
     private TestRestTemplate restTemplate;
 
-    @MockBean
+    @Autowired
     private ItemEntityRepository itemEntityRepository;
 
+    private UUID firstId;
+    private UUID secondId;
     private ItemEntity itemEntity;
     private ItemEntity itemEntity2;
 
+    @Before
+    public void setUp() {
+        firstId = UUID.randomUUID();
+        secondId = UUID.randomUUID();
+        itemEntity = new ItemEntity(firstId, "First", 1, 2);
+        itemEntity2 = new ItemEntity(secondId, "Second", 2, 3);
+
+        itemEntityRepository.save(itemEntity);
+        itemEntityRepository.save(itemEntity2);
+    }
+
     @Test
     public void shouldReturnItems_currentJustOne() {
-        itemEntity = new ItemEntity(UUID.randomUUID(), "First", 1, 2);
-        itemEntity2 = new ItemEntity(UUID.randomUUID(), "Second", 2, 3);
-        List<ItemEntity> entities = Arrays.asList(itemEntity, itemEntity2);
-        when(itemEntityRepository.findAll()).thenReturn(entities);
-
         ResponseEntity<ItemResponse[]> entity = restTemplate.getForEntity(MICROSERVICE_URL + servicePort + "/list", ItemResponse[].class);
 
         assertThat(entity.getStatusCode(), is(HttpStatus.OK));
-        assertThat(entity.getBody()[0].getName(), is("First"));
-        assertThat(entity.getBody()[1].getName(), is("Second"));
+        assertThat(entity.getBody()[0].getId(), is(firstId));
+        assertThat(entity.getBody()[0].getName(), is(itemEntity.getName()));
+        assertThat(entity.getBody()[1].getId(), is(secondId));
+        assertThat(entity.getBody()[1].getName(), is(itemEntity2.getName()));
     }
 
     @Test
