@@ -6,7 +6,7 @@ public class ConjuredQualityService extends QualityService {
 
     @Override
     public String getQualityServiceName() {
-        return "Conjured Mana Cake";
+        return QualityServiceName.CONJURED.getName();
     }
 
     @Override

@@ -2,6 +2,7 @@ package info.ernestas.gildedrose.sellin;
 
 import info.ernestas.gildedrose.kata.Item;
 import info.ernestas.gildedrose.kata.ItemBuilder;
+import info.ernestas.gildedrose.quality.QualityServiceName;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class SellInServiceTest {
 
     @Test
     public void testGetSellIn() {
-        Item item = ItemBuilder.item().setName("Conjured Mana Cake").setSellIn(3).setQuality(6).build();
+        Item item = ItemBuilder.item().setName(QualityServiceName.CONJURED.getName()).setSellIn(3).setQuality(6).build();
 
         int result = sellInService.getSellIn(item.getName(), item.getSellIn());
 
@@ -28,7 +29,7 @@ public class SellInServiceTest {
 
     @Test
     public void testGetSellIn_forSulfurasConcert_shouldNotDecreaseSellIn() {
-        Item item = ItemBuilder.item().setName("Sulfuras, Hand of Ragnaros").setSellIn(0).setQuality(80).build();
+        Item item = ItemBuilder.item().setName(QualityServiceName.SULFURAS.getName()).setSellIn(0).setQuality(80).build();
 
         int result = sellInService.getSellIn(item.getName(), item.getSellIn());
 

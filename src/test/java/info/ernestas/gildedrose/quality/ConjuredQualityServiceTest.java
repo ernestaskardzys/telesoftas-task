@@ -10,25 +10,23 @@ import static org.junit.Assert.assertThat;
 
 public class ConjuredQualityServiceTest {
 
-    private static final String NAME = "Conjured Mana Cake";
-
     private Item correctItem;
     private ConjuredQualityService conjuredQualityService;
 
     @Before
     public void setUp() {
         conjuredQualityService = new ConjuredQualityService();
-        correctItem = ItemBuilder.item().setName(NAME).setSellIn(2).setQuality(5).build();
+        correctItem = ItemBuilder.item().setName(QualityServiceName.CONJURED.getName()).setSellIn(2).setQuality(5).build();
     }
 
     @Test
     public void testGetQualityServiceName() {
-        assertThat(conjuredQualityService.getQualityServiceName(), is(NAME));
+        assertThat(conjuredQualityService.getQualityServiceName(), is(QualityServiceName.CONJURED.getName()));
     }
 
     @Test
     public void testGetQuality() {
-        Item item = ItemBuilder.item().setName(NAME).setSellIn(3).setQuality(6).build();
+        Item item = ItemBuilder.item().setName(QualityServiceName.CONJURED.getName()).setSellIn(3).setQuality(6).build();
 
         int result = conjuredQualityService.getQuality(item);
 

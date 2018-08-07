@@ -11,6 +11,7 @@ public class ItemBuilderTest {
     private static final String NAME = "Test name";
     private static final int QUALITY = 1;
     private static final int SELL_IN = 2;
+
     private ItemBuilder itemBuilder;
 
     @Before

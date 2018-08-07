@@ -4,8 +4,6 @@ import info.ernestas.gildedrose.kata.Item;
 
 public abstract class QualityService {
 
-    private static final String SULFURAS_CONCERT = "Sulfuras, Hand of Ragnaros";
-
     public abstract String getQualityServiceName();
 
     public abstract int getQuality(Item item);
@@ -19,7 +17,7 @@ public abstract class QualityService {
     }
 
     protected int decreaseQualityExceptForSulfurasConcert(String name, int quality) {
-        if (!name.equals(SULFURAS_CONCERT)) {
+        if (!name.equals(QualityServiceName.SULFURAS.getName())) {
             if (quality > 0) {
                 return quality - 1;
             }

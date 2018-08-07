@@ -6,7 +6,7 @@ public class TafkalQualityService extends QualityService {
 
     @Override
     public String getQualityServiceName() {
-        return "Backstage passes to a TAFKAL80ETC concert";
+        return QualityServiceName.TAFKAL.getName();
     }
 
     @Override

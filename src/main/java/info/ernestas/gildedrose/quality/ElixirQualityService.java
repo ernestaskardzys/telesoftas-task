@@ -6,7 +6,7 @@ public class ElixirQualityService extends QualityService {
 
     @Override
     public String getQualityServiceName() {
-        return "Elixir of the Mongoose";
+        return QualityServiceName.ELIXIR.getName();
     }
 
     @Override

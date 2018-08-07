@@ -6,7 +6,7 @@ public class AgedQualityService extends QualityService {
 
     @Override
     public String getQualityServiceName() {
-        return "Aged Brie";
+        return QualityServiceName.AGED.getName();
     }
 
     @Override

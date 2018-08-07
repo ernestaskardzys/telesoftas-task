@@ -6,7 +6,7 @@ public class SulfurasQualityService extends QualityService {
 
     @Override
     public String getQualityServiceName() {
-        return "Sulfuras, Hand of Ragnaros";
+        return QualityServiceName.SULFURAS.getName();
     }
 
     @Override
