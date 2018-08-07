@@ -1,10 +1,12 @@
 package info.ernestas.gildedrose.model.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.UUID;
 
-public class Item {
+@Document(collection = "item")
+public class ItemEntity {
 
     @Id
     private UUID id;
@@ -13,7 +15,7 @@ public class Item {
     private int sellIn;
     private int quality;
 
-    public Item(UUID id, String name, int sellIn, int quality) {
+    public ItemEntity(UUID id, String name, int sellIn, int quality) {
         this.id = id;
         this.name = name;
         this.sellIn = sellIn;
