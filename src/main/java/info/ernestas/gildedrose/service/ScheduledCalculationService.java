@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
 public class ScheduledCalculationService {
 
@@ -34,11 +32,11 @@ public class ScheduledCalculationService {
 
         List<ItemEntity> entities = dataService.findAll();
 
-        List<Item> items = entities.stream().map(e -> transformer.convertToItem(e)).collect(toList());
+        List<Item> items = transformer.convertToItems(entities);
         List<Item> convertedItems = gildedRose.updateQuality(items.stream().toArray(i -> new Item[items.size()]));
+        List<ItemEntity> convertedEntities = transformer.convertToItemEntities(convertedItems);
 
-        List<ItemEntity> convertedEntities = convertedItems.stream().map(e -> transformer.convertToItemEntity(e)).collect(toList());
-        convertedEntities.forEach(item -> dataService.save(item));
+        dataService.saveAll(convertedEntities);
     }
 
 }

@@ -33,15 +33,20 @@ public class DataServiceTest {
 
     @Test
     public void testSaveData() {
-        when(itemEntityRepository.save(itemEntity)).thenReturn(itemEntity);
+        List<ItemEntity> entities = Arrays.asList(itemEntity, itemEntity2);
+        when(itemEntityRepository.saveAll(entities)).thenReturn(entities);
 
-        ItemEntity result = dataService.save(itemEntity);
+        List<ItemEntity> results = dataService.saveAll(entities);
 
-        assertThat(result.getId(), is(itemEntity.getId()));
-        assertThat(result.getName(), is(itemEntity.getName()));
-        assertThat(result.getSellIn(), is(itemEntity.getSellIn()));
-        assertThat(result.getQuality(), is(itemEntity.getQuality()));
-        verify(itemEntityRepository).save(itemEntity);
+        assertThat(results.get(0).getId(), is(itemEntity.getId()));
+        assertThat(results.get(0).getName(), is(itemEntity.getName()));
+        assertThat(results.get(0).getSellIn(), is(itemEntity.getSellIn()));
+        assertThat(results.get(0).getQuality(), is(itemEntity.getQuality()));
+        assertThat(results.get(1).getId(), is(itemEntity2.getId()));
+        assertThat(results.get(1).getName(), is(itemEntity2.getName()));
+        assertThat(results.get(1).getSellIn(), is(itemEntity2.getSellIn()));
+        assertThat(results.get(1).getQuality(), is(itemEntity2.getQuality()));
+        verify(itemEntityRepository).saveAll(entities);
     }
 
     @Test

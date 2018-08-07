@@ -15,8 +15,8 @@ public class DataService {
         this.itemEntityRepository = itemEntityRepository;
     }
 
-    public ItemEntity save(ItemEntity itemEntity) {
-        return itemEntityRepository.save(itemEntity);
+    public List<ItemEntity> saveAll(List<ItemEntity> itemEntities) {
+        return itemEntityRepository.saveAll(itemEntities);
     }
 
     public List<ItemEntity> findAll() {
