@@ -1,29 +1,36 @@
 package info.ernestas.gildedrose.kata;
 
-import info.ernestas.gildedrose.quality.QualityService;
-import info.ernestas.gildedrose.quality.QualityServiceFactory;
-import info.ernestas.gildedrose.sellin.SellInService;
+import info.ernestas.gildedrose.RoseWorker;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GildedRose {
 
-    private SellInService sellInService = new SellInService();
+    private Executor executor = Executors.newFixedThreadPool(2);
+    private RoseWorker roseWorker = new RoseWorker();
 
     public List<Item> updateQuality(Item[] items) {
         List<Item> results = new ArrayList<>();
-        for (Item item : items) {
-            QualityService qualityService = QualityServiceFactory.getQualityService(item.getName());
 
-            final int sellIn = sellInService.getSellIn(item.getName(), item.getSellIn());
-            final int quality = qualityService.getQuality(item);
+        List<CompletableFuture> futures = Stream.of(items)
+                .map(item -> calculateItems(results, roseWorker, item))
+                .collect(Collectors.toList());
 
-            Item result = ItemBuilder.item().setName(item.getName()).setSellIn(sellIn).setQuality(quality).build();
-            results.add(result);
-        }
+        CompletableFuture allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]));
+
+        allOf.join();
 
         return results;
+    }
+
+    private CompletableFuture<Boolean> calculateItems(List<Item> results, RoseWorker roseWorker, Item item) {
+        return CompletableFuture.supplyAsync(() -> roseWorker.getItem(item), executor).thenApplyAsync(i -> results.add(i));
     }
 
 }
