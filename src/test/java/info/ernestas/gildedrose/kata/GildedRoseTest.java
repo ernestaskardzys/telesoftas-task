@@ -17,6 +17,8 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class GildedRoseTest {
 
+    private static final int TWO_SECONDS = 2_000;
+
     private GildedRose gildedRose;
 
     private Item input;
@@ -99,7 +101,7 @@ public class GildedRoseTest {
         gildedRose = new GildedRose();
     }
 
-    @Test
+    @Test(timeout = TWO_SECONDS)
     public void testUpdateQuality_useThreeDaysWorthOfData() {
         List<Item> resultingItems = gildedRose.updateQuality(items);
 

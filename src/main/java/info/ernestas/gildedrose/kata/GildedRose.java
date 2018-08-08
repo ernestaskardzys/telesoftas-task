@@ -1,14 +1,20 @@
 package info.ernestas.gildedrose.kata;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class GildedRose {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GildedRose.class);
 
     private static final Executor EXECUTOR = Executors.newFixedThreadPool(2);
 
@@ -21,9 +27,14 @@ public class GildedRose {
                 .map(item -> calculateItems(results, roseWorker, item))
                 .collect(Collectors.toList());
 
-        CompletableFuture allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]));
+        CompletableFuture<Void> allOf = CompletableFuture.allOf(futures.toArray(new CompletableFuture[futures.size()]));
 
-        allOf.join();
+        try {
+            allOf.get();
+        } catch (InterruptedException | ExecutionException e) {
+            LOGGER.error("Error calculating results: {}", e);
+            throw new RuntimeException(e);
+        }
 
         return results;
     }
