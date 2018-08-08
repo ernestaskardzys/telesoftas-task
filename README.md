@@ -25,7 +25,7 @@ As I prefer to split application into layers, I had to create a couple of object
 
 - *Item* is original class.
 - *ItemEntity* is an entity class for database.
-- *ItemResponse* is a POJO class used return response to the client.
+- *ItemResponse* is a POJO class used to return response to the client.
 
 We could technically use one object for all the tasks above, but I strongly believe that layers of application should be separated. Hence three objects were born.
 
