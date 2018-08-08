@@ -2,11 +2,11 @@
 
 I applied the following process:
 
-- Cover high-level tests existing code.
+- Cover high-level tests existing code. By using existing test fixture class I've generated output for 1st, 2nd and 99th day. And used that data for tests.
 - Try to make some initial small refactorings by extracting code.
 - Later just started refactoring & developing the whole application by using TDD. 
 
-## Architecture
+## Architecture and some comments
 
 As this project is quite small so architecture is a bit artificial.
 
@@ -17,6 +17,8 @@ As I prefer to split application into layers, I had to create a couple of object
 - *ItemResponse* is a POJO class used return response to the client.
 
 We could technically use one object for all the tasks above, but I strongly believe that layers of application should be separated. Hence three objects were born.
+
+*GildedRoseTest* is used as integration test for the main part of the system - calculation.
 
 ### Scheduler
 
