@@ -59,7 +59,7 @@ First command should return existing data in the database (none). Second one - a
 
 Third command manually executes scheduler - if we don't want to wait until tomorrow's 9 AM.
 
-*test/data* is handled by *TestController* - mock class to help debugging the application.
+*test/data* is handled by *TestController* - mock class to help debugging the application. As *TestController* is used just for development process - I've decided not to include comprehensive tests.
 
 ## MongoDB
 
