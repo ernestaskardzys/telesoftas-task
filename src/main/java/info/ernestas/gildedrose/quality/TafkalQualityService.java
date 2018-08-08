@@ -11,22 +11,27 @@ public class TafkalQualityService extends QualityService {
 
     @Override
     public int getQuality(Item item) {
-        int quality = increaseQualityIfQualityLessThanFifty(item.getQuality());
+        int quality = item.getQuality();
+        int count = getTimes(item.getSellIn());
 
-        if (item.getSellIn() < 11) {
-            quality = increaseQualityIfQualityLessThanFifty(quality);
-        }
-
-        if (item.getSellIn() < 6) {
-            quality = increaseQualityIfQualityLessThanFifty(quality);
+        for (int i = 0; i < count; i++) {
+            quality = increaseQualityFunction().apply(quality);
         }
 
         if (item.getSellIn() < 0) {
             quality = 0;
 
-            quality = decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
+            quality = decreaseQualityFunction(item).apply(quality);
         }
 
         return quality;
+    }
+
+    private int getTimes(int sellIn) {
+        int times = 1;
+        times = sellIn < 11 ? times++ : times;
+        times = sellIn < 6 ? times++ : times;
+
+        return times;
     }
 }

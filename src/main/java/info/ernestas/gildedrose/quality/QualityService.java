@@ -15,15 +15,11 @@ public abstract class QualityService {
     public abstract int getQuality(Item item);
 
     public int decreaseQuality(Item item) {
-        Function<Integer, Integer> qualityFunction = quality -> decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
-
-        return calculateQuality(item, qualityFunction);
+        return calculateQuality(item, decreaseQualityFunction(item));
     }
 
     public int increaseQuality(Item item) {
-        Function<Integer, Integer> qualityFunction = quality -> increaseQualityIfQualityLessThanFifty(quality);
-
-        return calculateQuality(item, qualityFunction);
+        return calculateQuality(item, increaseQualityFunction());
     }
 
     protected int increaseQualityIfQualityLessThanFifty(int quality) {
@@ -32,6 +28,14 @@ public abstract class QualityService {
         }
 
         return quality;
+    }
+
+    protected Function<Integer, Integer> increaseQualityFunction() {
+        return quality -> increaseQualityIfQualityLessThanFifty( quality);
+    }
+
+    protected Function<Integer, Integer> decreaseQualityFunction(Item item) {
+        return quality -> decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
     }
 
     protected int decreaseQualityExceptForSulfurasConcert(String name, int quality) {
