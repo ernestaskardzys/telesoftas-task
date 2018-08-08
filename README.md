@@ -52,12 +52,12 @@ To test running container please run:
 ```bash
 $ curl localhost/list
 $ curl localhost/test/data
-$ curl localhost/list
+$ curl localhost/test/scheduler
 ```
 
 First command should return existing data in the database (none). Second one - adds some mock data into the database.
 
-Third command just returns Inserted data from the database.
+Third command manually executes scheduler - if we don't want to wait until tomorrow's 9 AM.
 
 *test/data* is handled by *TestController* - mock class to help debugging the application.
 

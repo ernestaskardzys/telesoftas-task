@@ -5,6 +5,7 @@ import info.ernestas.gildedrose.kata.ItemBuilder;
 import info.ernestas.gildedrose.model.entity.ItemEntity;
 import info.ernestas.gildedrose.quality.QualityServiceName;
 import info.ernestas.gildedrose.service.DataService;
+import info.ernestas.gildedrose.service.ScheduledCalculationService;
 import info.ernestas.gildedrose.service.transformer.ItemToItemEntityTransformer;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,12 @@ public class TestController {
 
     private final DataService dataService;
     private final ItemToItemEntityTransformer transformer;
+    private final ScheduledCalculationService scheduledCalculationService;
 
-    public TestController(DataService dataService, ItemToItemEntityTransformer transformer) {
+    public TestController(DataService dataService, ItemToItemEntityTransformer transformer, ScheduledCalculationService scheduledCalculationService) {
         this.dataService = dataService;
         this.transformer = transformer;
+        this.scheduledCalculationService = scheduledCalculationService;
     }
 
     @GetMapping("/data")
@@ -35,6 +38,11 @@ public class TestController {
         List<ItemEntity> itemEntities = transformer.convertToItemEntities(items);
 
         return dataService.saveAll(itemEntities);
+    }
+
+    @GetMapping("/scheduler")
+    public void executeScheduler() {
+        scheduledCalculationService.calculate();
     }
 
 }
