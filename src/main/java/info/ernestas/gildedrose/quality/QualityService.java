@@ -2,6 +2,8 @@ package info.ernestas.gildedrose.quality;
 
 import info.ernestas.gildedrose.kata.Item;
 
+import java.util.function.Function;
+
 public abstract class QualityService {
 
     private static final int TWO = 2;
@@ -13,25 +15,15 @@ public abstract class QualityService {
     public abstract int getQuality(Item item);
 
     public int decreaseQuality(Item item) {
-        int decreaseCount = item.getSellIn() < 0 ? TWO : ONE;
+        Function<Integer, Integer> qualityFunction = quality -> decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
 
-        int quality = item.getQuality();
-        for (int i = 0; i < decreaseCount; i++) {
-            quality = decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
-        }
-
-        return quality;
+        return calculateQuality(item, qualityFunction);
     }
 
     public int increaseQuality(Item item) {
-        int increaseCount = item.getSellIn() < 0 ? TWO : ONE;
+        Function<Integer, Integer> qualityFunction = quality -> increaseQualityIfQualityLessThanFifty(quality);
 
-        int quality = item.getQuality();
-        for (int i = 0; i < increaseCount; i++) {
-            quality = increaseQualityIfQualityLessThanFifty(quality);
-        }
-
-        return quality;
+        return calculateQuality(item, qualityFunction);
     }
 
     protected int increaseQualityIfQualityLessThanFifty(int quality) {
@@ -47,6 +39,17 @@ public abstract class QualityService {
             if (quality > 0) {
                 return quality - ONE;
             }
+        }
+
+        return quality;
+    }
+
+    private int calculateQuality(Item item, Function<Integer, Integer> qualityFunction) {
+        int times = item.getSellIn() < 0 ? TWO : ONE;
+
+        int quality = item.getQuality();
+        for (int i = 0; i < times; i++) {
+            quality = qualityFunction.apply(quality);
         }
 
         return quality;

@@ -50,7 +50,7 @@ Third command just returns Inserted data from the database.
 
 ## MongoDB
 
-To see the database of MongoDB - please open http://localhost:8081/
+To see the database of MongoDB - please open [MongoDB](http://localhost:8081/)
 
 ## Tested on
 
