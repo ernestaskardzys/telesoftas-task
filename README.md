@@ -1,3 +1,14 @@
+## Technologies used
+
+I have used the following technologies:
+* [Spring Boot](http://spring.io/projects/spring-boot)
+* [Docker](https://www.docker.com/)
+* [Docker Compose](https://docs.docker.com/compose/)
+* [Nginx](https://www.nginx.com/)
+* [Gradle](https://gradle.org/)
+* [ActiveMQ](http://activemq.apache.org/)
+* [MongoDB](https://www.mongodb.com/)
+
 ## Refactoring process
 
 I applied the following process:
@@ -8,7 +19,7 @@ I applied the following process:
 
 ## Architecture and some comments
 
-As this project is quite small so architecture is a bit artificial.
+As this project is quite small so architecture is a bit artificial. Load balancer is not needed, but I've added it just for fun.
 
 As I prefer to split application into layers, I had to create a couple of objects which are effectively identical: *Item*, *ItemEntity* and *ItemResponse*.
 
@@ -19,6 +30,8 @@ As I prefer to split application into layers, I had to create a couple of object
 We could technically use one object for all the tasks above, but I strongly believe that layers of application should be separated. Hence three objects were born.
 
 *GildedRoseTest* is used as integration test for the main part of the system - calculation.
+
+Nginx is used as load balancer. We have two instances of microservices running, so we need to load balance requests. At the same time, Nginx works as a proxy - it redirects requests from port 80 to 8080 of the microservices.
 
 ### Scheduler
 
@@ -31,7 +44,7 @@ In order to run the project, execute the following commands:
 ```bash
 $ ./gradlew clean build
 $ docker-compose build
-$ docker-compose up
+$ docker-compose up --scale gildedrose-service=2
 ```
 
 To test running container please run:
