@@ -4,14 +4,19 @@ import info.ernestas.gildedrose.kata.Item;
 
 public abstract class QualityService {
 
+    private static final int TWO = 2;
+    private static final int ONE = 1;
+    private static final int FIFTY = 50;
+
     public abstract String getQualityServiceName();
 
     public abstract int getQuality(Item item);
 
     public int decreaseQuality(Item item) {
-        int quality = decreaseQualityExceptForSulfurasConcert(item.getName(), item.getQuality());
+        int decreaseCount = item.getSellIn() < 0 ? TWO : ONE;
 
-        if (item.getSellIn() < 0) {
+        int quality = item.getQuality();
+        for (int i = 0; i < decreaseCount; i++) {
             quality = decreaseQualityExceptForSulfurasConcert(item.getName(), quality);
         }
 
@@ -19,9 +24,10 @@ public abstract class QualityService {
     }
 
     public int increaseQuality(Item item) {
-        int quality = increaseQualityIfQualityLessThanFifty(item.getQuality());
+        int increaseCount = item.getSellIn() < 0 ? TWO : ONE;
 
-        if (item.getSellIn() < 0) {
+        int quality = item.getQuality();
+        for (int i = 0; i < increaseCount; i++) {
             quality = increaseQualityIfQualityLessThanFifty(quality);
         }
 
@@ -29,8 +35,8 @@ public abstract class QualityService {
     }
 
     protected int increaseQualityIfQualityLessThanFifty(int quality) {
-        if (quality < 50) {
-            return quality + 1;
+        if (quality < FIFTY) {
+            return quality + ONE;
         }
 
         return quality;
@@ -39,7 +45,7 @@ public abstract class QualityService {
     protected int decreaseQualityExceptForSulfurasConcert(String name, int quality) {
         if (!name.equals(QualityServiceName.SULFURAS.getName())) {
             if (quality > 0) {
-                return quality - 1;
+                return quality - ONE;
             }
         }
 
